@@ -18,12 +18,24 @@ const NoteList = () => {
     setOpenNote(null);
   };
 
+  const getNoteBackgroundColor = (score: number) => {
+    if (score < 8) {
+      return 'red';
+    } else if (score < 10) {
+      return 'orange';
+    } else if (score < 13) {
+      return 'yellow';
+    } else {
+      return 'green';
+    }
+  };
+
   return (
     <div>
       <h2>Notes</h2>
       <ul>
         {notes.map((note: any, index: any) => (
-          <li key={index}>
+          <li key={index} className={getNoteBackgroundColor(note.score)}>
             <strong>{note.title}</strong> - {note.createdAt}
             <br />
             {note.comment}
@@ -46,7 +58,7 @@ const NoteList = () => {
             console.log('Delete clicked');
             // Ajoutez ici la logique pour supprimer la note
           }}
-          onClose={handleNoteClose} // Ajoutez cette ligne
+          onClose={handleNoteClose}
         />
       )}
     </div>

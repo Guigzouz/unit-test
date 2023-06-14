@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+.red {
+  background-color: red;
+}
+
+.orange {
+  background-color: rgb(218, 144, 6);
+}
+
+.yellow {
+  background-color: rgb(183, 183, 9);
+}
+
+.green {
+  background-color: green;
+}

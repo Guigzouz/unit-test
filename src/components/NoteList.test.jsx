@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 
 describe('NoteList', () => {
 
-it('renders a list of notes', () => {
+test('renders a list of notes', () => {
   // Mock the notes data
   const mockNotes = [
     { id: '1', title: 'Note 1', score: 16, comment: 'Good note', createdDate: new Date() },

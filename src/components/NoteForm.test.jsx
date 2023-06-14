@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import { describe, it, expect } from 'vitest';
 
 describe('NoteForm', () => {
-  it('updates input values on change', () => {
+  test('updates input values on change', () => {
     const { getByLabelText } = render(<NoteForm />);
   
     const titleInput = getByLabelText('Title:');
