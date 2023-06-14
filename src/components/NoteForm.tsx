@@ -1,28 +1,27 @@
 import { useState } from 'react';
+import useNoteStore from '../store/store';
 
 const NoteForm = ({ onSubmit }) => {
-  const [title, setTitle] = useState('');
-  const [score, setScore] = useState('');
-  const [comment, setComment] = useState('');
+    const [title, setTitle] = useState('');
+    const [score, setScore] = useState('');
+    const [comment, setComment] = useState('');
+  
+    const addNote = useNoteStore((state) => state.addNote);
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const newNote = {
+        title,
+        score: parseInt(score),
+        comment,
+        createdAt: new Date().toISOString(),
+      };
+  
+      addNote(newNote);
+      setTitle('');
+      setScore('');
+      setComment('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newNote = {
-      title,
-      score: parseInt(score),
-      comment,
-      createdAt: new Date().toISOString(),
-    };
-
-    // Stockage de la nouvelle note dans le LocalStorage
-    const existingNotes = JSON.parse(localStorage.getItem('notes') || '[]');
-    const updatedNotes = [...existingNotes, newNote];
-    localStorage.setItem('notes', JSON.stringify(updatedNotes));
-
-    onSubmit(title, parseInt(score), comment);
-    setTitle('');
-    setScore('');
-    setComment('');
   };
 
   return (
