@@ -22,7 +22,7 @@ function App() {
 				<NoteList />
 
     		</div>
-			<p data-testid="quote">{quote ? quote : 'Vite + React'}</p>
+			<p data-testid="quote">{quote ? quote : 'Meme dans pronote, Kaamelott reste important'}</p>
 			<div className="card">
 				<button data-testid="bouton-fetch" onClick={getKaamelottQuote}>
 					Get random kaamelott quote
