@@ -1,0 +1,1 @@
+// ce composant permet à l'utilisateur de rechercher des notes en saisissant un terme de recherche.

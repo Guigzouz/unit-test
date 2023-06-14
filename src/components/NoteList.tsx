@@ -1,0 +1,1 @@
+// ce composant affiche la liste des notes existantes en utilisant le composant Note.
