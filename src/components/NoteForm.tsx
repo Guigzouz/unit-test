@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import useNoteStore from '../store/store';
 
-const NoteForm = ({ onSubmit }) => {
+const NoteForm = () => {
+
+    
     const [title, setTitle] = useState('');
     const [score, setScore] = useState('');
     const [comment, setComment] = useState('');
   
     const addNote = useNoteStore((state) => state.addNote);
   
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
       e.preventDefault();
       const newNote = {
         title,
@@ -39,6 +41,7 @@ const NoteForm = ({ onSubmit }) => {
         Score:
         <input
           type="number"
+          max={20}
           value={score}
           onChange={(e) => setScore(e.target.value)}
           required

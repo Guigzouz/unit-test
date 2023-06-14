@@ -13,16 +13,12 @@ function App() {
 		setQuote(quote.data.citation);
 	};
 
-	const handleNoteSubmit = (title: string, score: number, comment: string) => {
-		// Faire la logique de gestion de notes ici
-		console.log('New Note:', title, score, comment);
-	  };
 
 	return (
 		<>
 			<div>
       		<h1>Pronote mais en mieux</h1>
-      			<NoteForm onSubmit={handleNoteSubmit} />
+      			<NoteForm />
 				<NoteList />
 
     		</div>

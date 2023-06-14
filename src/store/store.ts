@@ -1,30 +1,19 @@
 import {create} from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
-type Note = {
-  title: string;
-  score: number;
-  comment: string;
-  createdAt: string;
-};
+const useNoteStore = create(
+  persist(
+    (set) => ({
+      notes: [],
+      addNote: (newNote: any) => set((state: { notes: any; }) => ({ notes: [...state.notes, newNote] })),
+    }),
+    {
+      name: 'note-storage',
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);
 
-type NoteState = {
-  notes: Note[];
-  addNote: (note: Note) => void;
-};
 
-const useNoteStore = create<NoteState>((set) => {
-  const storedNotes = localStorage.getItem('notes');
-  const initialNotes = storedNotes ? JSON.parse(storedNotes) : [];
-
-  return {
-    notes: initialNotes,
-    addNote: (note) =>
-      set((state) => {
-        const updatedNotes = [...state.notes, note];
-        localStorage.setItem('notes', JSON.stringify(updatedNotes));
-        return { notes: updatedNotes };
-      }),
-  };
-});
 
 export default useNoteStore;
